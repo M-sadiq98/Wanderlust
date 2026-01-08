@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top mb-3">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-nav">
+      <a class="nav-link" href="/listings">Explore</a>
+    </div>
+
+    <div class="typewriter ms-auto">
+      <h1>Welcome To <span class="wanderlust">Wanderlust</span></h1>
+    </div>
+    
+    <div class="navbar-nav ms-auto">
+      <a class="nav-link" href="/listings/new">New Listing</a>
+      <% if(!currUser){ %>
+        <a class="nav-link" href="/signup"><b>Sign up</b></a>
+        <a class="nav-link" href="/login"><b>Log in</b></a>
+      <% } %>
+      <% if(currUser){ %>
+        <a class="nav-link" href="/Logout"><b>Log out</b></a>
+      <% } %>
+    </div>
+  </div>
+</nav>
