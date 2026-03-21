@@ -2,6 +2,8 @@ if(process.env.NODE_ENV != "production"){
   require("dotenv").config();
 }
 
+// https://wanderlust-uk4r.onrender.com/listings
+
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -78,16 +80,6 @@ app.use((req, res, next) => {
   res.locals.currUser = req.user;
   next();
 });
-
-// app.get("/demouser", async (req, res) => {
-//   let fakeUser = new User({
-//     email: "harry@email.com",
-//     username: "harry",
-//   });
-  
-//   let registeredUser = await User.register(fakeUser, "mypass");
-//   console.log(registeredUser);
-// });
 
 ////ROUTES
 app.use("/listings", listingRouter);
