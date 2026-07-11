@@ -81,7 +81,17 @@ app.use((req, res, next) => {
   res.locals.currentPath = req.path;
   next();
 });
+/////////Read-only mode middleware
+const READ_ONLY = process.env.READ_ONLY !== "false";
 
+app.use((req, res, next) => {
+  if (READ_ONLY && ["POST", "PUT", "PATCH", "DELETE"].includes(req.method)) {
+    req.flash("error", "This site is currently in read-only mode.");
+    return res.redirect(req.get("Referer") || "/listings");
+  }
+  next();
+});
+////////
 ////ROUTES
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
